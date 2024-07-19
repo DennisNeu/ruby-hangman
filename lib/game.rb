@@ -11,6 +11,13 @@ class Game
     @solution_string =
   end
 
+  def start_game()
+    print_introduction
+    while(true)
+
+    end
+  end
+
   #private
 
   def choose_word()
@@ -41,5 +48,11 @@ class Game
 
   def build_solution_string()
     @solution_string = "_" * @choose_word.length
+  end
+
+  def print_introduction()
+    puts "This is a game of hangman"
+    puts "You have #{@guess_amount} guesses!"
+    puts "A random word has been chosen"
   end
 end
