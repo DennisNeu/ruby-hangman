@@ -8,6 +8,7 @@ class Game
     @wordlist = @file_handler.wordlist
     @chosen_word = choose_word
     @guessed_letters = Array.new
+    @solution_string =
   end
 
   #private
@@ -26,7 +27,19 @@ class Game
     input
   end
 
-    def letter?(string)
-      !!(string =~ /^[A-Za-z]$/)
+  def char_indices(char, string)
+    indices = []
+    string.each_char.with_index do |c, index|
+      indices << index if c == char
     end
+    indices
+  end
+
+  def letter?(string)
+    !!(string =~ /^[A-Za-z]$/)
+  end
+
+  def build_solution_string()
+    @solution_string = "_" * @choose_word.length
+  end
 end
