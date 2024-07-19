@@ -1,5 +1,5 @@
-require_relative "lib/file_handler.rb"
+require_relative "lib/game"
 
-file_handler = FileHandler.new("./wordlist.txt")
+game = Game.new(6, "wordlist.txt")
 
-puts file_handler.wordlist
+puts game.userinput
