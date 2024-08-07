@@ -18,14 +18,19 @@ class Game
     print_introduction
     while(true)
       @guessed_letters << userinput
-
+      build_solution_string
+      puts @chosen_word
     end
   end
 
   #private
 
   def choose_word
-    @wordlist.sample
+    word = @wordlist.sample
+    while (word.length < 6)
+      word = @wordlist.sample
+    end
+    word
   end
 
   def userinput
@@ -51,7 +56,7 @@ class Game
   end
 
   def build_solution_string
-    @solution_string = "_" * @choose_word.length
+    @solution_string = "_" * (@chosen_word.length - 1)
     @guessed_letters.each do |char|
       if @chosen_word.include?(char)
         indices = char_indices(char, @chosen_word)
@@ -60,12 +65,13 @@ class Game
         end
       end
     end
+    puts @solution_string
   end
 
   def print_introduction
     puts "This is a game of hangman"
     puts "You have #{@guess_amount} guesses!"
     puts "A random word has been chosen"
-    puts ascii_handler.won_art
+    puts @ascii_handler.won_art
   end
 end
