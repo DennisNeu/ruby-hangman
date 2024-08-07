@@ -1,5 +1,7 @@
 # This class handles Ascii Art
 class AsciiHandler
+  attr_reader :stages, :won_art
+
   def initialize
     @stages = [
       "
@@ -80,7 +82,3 @@ class AsciiHandler
     puts @won_art
   end
 end
-
-ascii_handler = AsciiHandler.new
-
-ascii_handler.print_stages
