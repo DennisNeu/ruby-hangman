@@ -7,8 +7,8 @@ class Game
     @file_handler = FileHandler.new(path)
     @wordlist = @file_handler.wordlist
     @chosen_word = choose_word
-    @guessed_letters = Array.new
-    @solution_string =
+    @guessed_letters = []
+    @solution_string = ""
   end
 
   def start_game()
