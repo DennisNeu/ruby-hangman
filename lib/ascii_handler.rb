@@ -77,8 +77,7 @@ class AsciiHandler
       "
   end
 
-  def print_stages
-    puts @stages
-    puts @won_art
+  def print_stages(index)
+    puts @stages[index]
   end
 end

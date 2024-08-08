@@ -17,9 +17,24 @@ class Game
   def start_game
     print_introduction
     while(true)
+      if @current_try > 5
+        puts "you lost!"
+        break
+      end
       @guessed_letters << userinput
+      @current_try = @current_try + 1
+      @ascii_handler.print_stages(@current_try)
+      puts "Tries left: #{@max_tries - @current_try}"
+      puts "you guessed: "
+      puts @guessed_letters.join(" ")
       build_solution_string
       puts @chosen_word
+      puts @solution_string
+      if @chosen_word.strip == @solution_string.strip
+        puts "you won!"
+        puts @ascii_handler.won_art
+        break
+      end
     end
   end
 
@@ -27,7 +42,7 @@ class Game
 
   def choose_word
     word = @wordlist.sample
-    while (word.length < 6)
+    while (word.length > 6)
       word = @wordlist.sample
     end
     word
