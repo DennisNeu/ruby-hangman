@@ -72,6 +72,6 @@ class Game
     puts "This is a game of hangman"
     puts "You have #{@guess_amount} guesses!"
     puts "A random word has been chosen"
-    puts @ascii_handler.won_art
+    puts @ascii_handler.stages[0]
   end
 end
