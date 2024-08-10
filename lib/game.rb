@@ -19,6 +19,7 @@ class Game
     while(true)
       if @current_try > 5
         puts "you lost!"
+        restart
         break
       end
       @guessed_letters << userinput
@@ -33,12 +34,13 @@ class Game
       if @chosen_word.strip == @solution_string.strip
         puts "you won!"
         puts @ascii_handler.won_art
+        restart
         break
       end
     end
   end
 
-  #private
+  private
 
   def choose_word
     word = @wordlist.sample
@@ -88,5 +90,21 @@ class Game
     puts "You have #{@guess_amount} guesses!"
     puts "A random word has been chosen"
     puts @ascii_handler.stages[0]
+  end
+
+  def restart
+    puts "Press a key to restart the game"
+    input = gets
+    unless input.nil?
+      reset_params
+      start_game
+    end
+  end
+
+  def reset_params
+    @current_try = 0
+    @chosen_word = choose_word
+    @guessed_letters = []
+    @solution_string = ""
   end
 end
