@@ -19,6 +19,7 @@ class Game
     while(true)
       if @current_try > 5
         puts "you lost!"
+        puts "Correct word was: #{@chosen_word}"
         restart
         break
       end
@@ -29,8 +30,6 @@ class Game
       puts "you guessed: "
       puts @guessed_letters.join(" ")
       build_solution_string
-      puts @chosen_word
-      puts @solution_string
       if @chosen_word.strip == @solution_string.strip
         puts "you won!"
         puts @ascii_handler.won_art
