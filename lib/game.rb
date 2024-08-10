@@ -87,7 +87,7 @@ class Game
 
   def print_introduction
     puts "This is a game of hangman"
-    puts "You have #{@guess_amount} guesses!"
+    puts "You have #{@max_tries} guesses!"
     puts "A random word has been chosen"
     puts @ascii_handler.stages[0]
   end
